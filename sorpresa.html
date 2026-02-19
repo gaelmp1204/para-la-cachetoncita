@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Marely ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* Pantalla inicio */
+#inicio{
+    position:fixed;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    z-index:10;
+}
+
+#inicio button{
+    padding:15px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4d6d;
+    cursor:pointer;
+}
+
+/* Contenido */
+#contenido{
+    display:none;
+}
+
+/* Texto arriba */
+#textoCaja{
+    font-size:22px;
+    margin-bottom:50px;
+    animation:parpadeo 1.5s infinite;
+}
+
+@keyframes parpadeo{
+    0%{opacity:1;}
+    50%{opacity:0.5;}
+    100%{opacity:1;}
+}
+
+/* Caja */
+.regalo{
+    width:150px;
+    height:150px;
+    background:#ff4d6d;
+    position:relative;
+    border-radius:10px;
+    cursor:pointer;
+    margin:0 auto;
+}
+
+.tapa{
+    width:150px;
+    height:40px;
+    background:#e63950;
+    position:absolute;
+    top:-40px;
+    left:0;
+    border-radius:10px 10px 0 0;
+}
+
+/* Listón */
+.regalo::before{
+    content:"";
+    position:absolute;
+    width:30px;
+    height:150px;
+    background:white;
+    left:60px;
+}
+
+.tapa::before{
+    content:"";
+    position:absolute;
+    width:30px;
+    height:40px;
+    background:white;
+    left:60px;
+}
+
+/* Snoopy */
+.snoopyGrande{
+    width:220px;
+    display:none;
+    margin-top:20px;
+}
+
+/* Mensaje */
+.mensaje{
+    display:none;
+    font-size:20px;
+    padding:0 20px;
+    max-width:400px;
+}
+
+/* Botón secreto */
+.botonSecreto{
+    display:none;
+    margin-top:20px;
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#ff4d6d;
+    cursor:pointer;
+}
+
+/* Texto secreto */
+#textoSecreto{
+    display:none;
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Corazones */
+.corazon{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation:caer linear infinite;
+}
+
+@keyframes caer{
+    to{ transform:translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Pantalla inicial -->
+<div id="inicio">
+    <h2>Un regalo para ti, cachetoncita linda ❤️</h2>
+    <button onclick="empezar()">Tocar para comenzar</button>
+</div>
+
+<!-- Contenido -->
+<div id="contenido">
+
+<h3 id="textoCaja">Toca el regalo 🎁</h3>
+
+<div class="regalo" id="caja" onclick="abrirRegalo()">
+    <div class="tapa"></div>
+</div>
+
+<!-- Imagen local -->
+<img src="snoopy.png" id="snoopy" class="snoopyGrande">
+
+<div class="mensaje" id="mensaje">
+    mi niña linda ❤️<br><br>
+    te preguntaras para que todo esto??<br>
+    pues simplemente es para decirte:🤭<br><br>
+    Como quisiera robar sus ojos,🥰<br>
+    y de sus labios Robarle un beso,😘<br><br>
+    como quisiera decirle un día Que sus encantos me tienen preso💕<br>
+    como quisiera estar a tu lado 🥺❤️
+</div>
+
+<button class="botonSecreto" id="botonSecreto" onclick="mostrarSecreto()">
+    Mensaje secreto
+</button>
+
+<div id="textoSecreto">
+    Ve a mis notas de Insta 😉
+</div>
+
+</div>
+
+<script>
+function empezar(){
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("contenido").style.display="block";
+}
+
+function abrirRegalo(){
+    document.getElementById("textoCaja").style.display="none";
+    document.getElementById("caja").style.display="none";
+    document.getElementById("snoopy").style.display="block";
+    document.getElementById("mensaje").style.display="block";
+    document.getElementById("botonSecreto").style.display="inline-block";
+
+    // Corazones
+    setInterval(function(){
+        var c=document.createElement("div");
+        c.className="corazon";
+        c.innerHTML="❤️";
+        c.style.left=Math.random()*100+"vw";
+        c.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(c);
+
+        setTimeout(function(){
+            c.remove();
+        },5000);
+    },300);
+}
+
+function mostrarSecreto(){
+    document.getElementById("textoSecreto").style.display="block";
+}
+</script>
+
+</body>
+</html>
